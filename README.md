@@ -10,6 +10,11 @@ en el servidor y trabajar juntos.
 
 Se destaca por contar con un completo ecosistema de componentes, herramientas y módulos que posibilitan el desarrollo de funcionalidades complejas en poco tiempo.
 
+## **¿Qué es JSX?**
+
+JSX es una extensión de sintaxis de JavaScript que nos permite mezclar JS y HTML (XML), de ahí su nombre JavaScript XML.
+Esta extensión nos facilita la vida pues nos permite escribir un código más limpio, sin tantas repeticiones (DRY), y con muy pocos factores o condiciones a tener en cuenta.
+
 ### **Inicializar un proyecto en REACT**
 
 Necesitaremos un empaquetador de apliciones:
