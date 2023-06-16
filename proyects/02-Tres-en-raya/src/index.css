@@ -36,8 +36,9 @@ body {
 }
 
 .board h1 {
-  color: #eee;
-  margin-bottom: 16px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #7096fe;
+  margin-bottom: 26px;
 }
 
 .board button {
