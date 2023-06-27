@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import "./App.css";
+import confetti from "canvas-confetti";
 
 const TURNS = {
   X: "x",
@@ -56,6 +57,11 @@ function App() {
     setTurn(TURNS.X);
     setWinner(null);
   };
+  const checkEndGame = (newBoard) => {
+    // Revisamos si hay empate
+    // Si no hay más espacios vacíos en tablero
+    return newBoard.every((Square) => Square !== null); // Si cada posición del array es diferente de null
+  };
   const updateBoard = (index) => {
     // No actualizamos la posición si ya tiene algo:
     if (board[index] || winner) return;
@@ -71,14 +77,18 @@ function App() {
     //Revisamos si hay ganador
     const newWinner = checkWinner(newBoard);
     if (newWinner) {
+      confetti()
       setWinner(newWinner);
-      // TODO check is game is over
+    } else if (checkEndGame(newBoard)) {
+      setWinner(false); // Empate
     }
   };
   return (
     <main className="board">
       <h1>Tres en raya</h1>
-      <button className="btn-3d" onClick={resetGame}>Reset</button>
+      <button className="btn-3d" onClick={resetGame}>
+        Reset
+      </button>
       <section className="game">
         {board.map((_, index) => {
           return (
@@ -100,7 +110,9 @@ function App() {
               {winner && <Square>{winner}</Square>}
             </header>
             <footer>
-              <button className="btn-3d" onClick={resetGame}>Empezar</button>
+              <button className="btn-3d" onClick={resetGame}>
+                Empezar
+              </button>
             </footer>
           </div>
         </section>

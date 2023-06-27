@@ -37,6 +37,7 @@ body {
 
 .board h1 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-transform: capitalize;
   color: #7096fe;
   margin-bottom: 26px;
 }
