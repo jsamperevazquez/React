@@ -51,7 +51,11 @@ function App() {
     // si no hay ganador
     return null;
   };
-
+  const resetGame = () => {
+    setBoard(Array(9).fill(null));
+    setTurn(TURNS.X);
+    setWinner(null);
+  };
   const updateBoard = (index) => {
     // No actualizamos la posición si ya tiene algo:
     if (board[index] || winner) return;
@@ -68,12 +72,13 @@ function App() {
     const newWinner = checkWinner(newBoard);
     if (newWinner) {
       setWinner(newWinner);
-      alert(`El ganador es ${newWinner}`);
+      // TODO check is game is over
     }
   };
   return (
     <main className="board">
       <h1>Tres en raya</h1>
+      <button className="btn-3d" onClick={resetGame}>Reset</button>
       <section className="game">
         {board.map((_, index) => {
           return (
@@ -87,6 +92,19 @@ function App() {
         <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
+      {winner !== null && (
+        <section className="winner">
+          <div className="text">
+            <h2>{winner === false ? "Empate" : "Ganó:"}</h2>
+            <header className="win">
+              {winner && <Square>{winner}</Square>}
+            </header>
+            <footer>
+              <button className="btn-3d" onClick={resetGame}>Empezar</button>
+            </footer>
+          </div>
+        </section>
+      )}
     </main>
   );
 }
